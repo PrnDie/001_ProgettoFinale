@@ -28,7 +28,9 @@ public class Test
 
 	public static void main(String[] args)
 	{
-
+		/**
+		 * Link dataset 
+		 */
 		String url = "https://www.dati.gov.it/api/3/action/package_show?id=96404f82-975e-490e-89e5-966181f72b4c";
 		
 		if(args.length == 1)
@@ -76,6 +78,7 @@ public class Test
 			}
 
 		List<List<String>> records = new ArrayList<>();
+		
 		Vector<Ripetitore> v = new Vector<Ripetitore>();
 		try (BufferedReader br = new BufferedReader(new FileReader("t1.csv"))) {
 			String line;
