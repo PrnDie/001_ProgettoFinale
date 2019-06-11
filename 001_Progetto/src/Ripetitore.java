@@ -1,6 +1,6 @@
 
 public class Ripetitore {
-	// Attributes
+	//Attributes
 	private String gestore;
 	private String impianto;
 	private String indirizzo;
