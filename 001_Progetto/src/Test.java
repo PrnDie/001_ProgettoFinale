@@ -127,9 +127,7 @@ public class Test
 	     * Mi assicuro che il file esista
 	     */
 	    if (f.exists()) {
-	    	boolean success = f.delete();
-	    	if (!success)
-	  	      throw new IllegalArgumentException("Cancellazione fallita");
+	    	f.delete();
 	    }
 	    
 		try (InputStream in = URI.create(url).toURL().openStream()) {
