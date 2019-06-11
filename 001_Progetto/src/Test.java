@@ -48,7 +48,6 @@ public class Test
 				
 					while ((line = buf.readLine()) != null) {
 						data+= line;
-						System.out.println( line );
 					}
 				} finally {
 					in.close();
@@ -63,7 +62,6 @@ public class Test
 			        JSONObject o1 = (JSONObject)o; 
 			        String format = (String)o1.get("format");
 			        String urlD = (String)o1.get("url");
-			        System.out.println(format + " | " + urlD);
 			        if(format.equals("csv")) {
 			        	download(urlD, "t1.csv");
 			        }
@@ -115,8 +113,8 @@ public class Test
 		List<String> values = new ArrayList<String>();
 		try (Scanner rowScanner = new Scanner(line)) {
 		rowScanner.useDelimiter(COMMA_DELIMITER);
-		while (rowScanner.hasNext()) {
-			values.add(rowScanner.next());
+			while (rowScanner.hasNext()) {
+				values.add(rowScanner.next());
 			}
 		}
 		return values;
@@ -124,8 +122,18 @@ public class Test
 	
 	public static void download(String url, String fileName) throws Exception
 	{
+	    File f = new File(fileName);
+	    /**
+	     * Mi assicuro che il file esista
+	     */
+	    if (f.exists()) {
+	    	boolean success = f.delete();
+	    	if (!success)
+	  	      throw new IllegalArgumentException("Cancellazione fallita");
+	    }
+	    
 		try (InputStream in = URI.create(url).toURL().openStream()) {
-        Files.copy(in, Paths.get(fileName));
+			Files.copy(in, Paths.get(fileName));
 		}
 	}
 }
