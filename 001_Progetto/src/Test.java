@@ -61,7 +61,7 @@ public class Test {
 			e.printStackTrace();
 		}
 
-	Employee e = new Employee("Mario", "Via Brecce Bianche", 65535, 1024 * 1024 - 2);
+	Ripetitore e = new Ripetitore("Mario", "Via Brecce Bianche", 65535, 1024 * 1024 - 2);
 	/*
 			try {
 				FileOutputStream fileOut = new FileOutputStream("employee.ser");
@@ -74,11 +74,11 @@ public class Test {
 				i.printStackTrace();
 			}
 	*/
-			Employee e1 = null;		
+			Ripetitore e1 = null;		
 			try {
 				FileInputStream fileIn = new FileInputStream("employee.ser");
 				ObjectInputStream in = new ObjectInputStream(fileIn);
-				e1 = (Employee) in.readObject();
+				e1 = (Ripetitore) in.readObject();
 				in.close();
 				fileIn.close();
 			} catch (IOException i) {
@@ -91,21 +91,21 @@ public class Test {
 			}
 
 			List<List<String>> records = new ArrayList<>();
-			Vector<Employee> v = new Vector<Employee>();
+			Vector<Ripetitore> v = new Vector<Ripetitore>();
 			try (BufferedReader br = new BufferedReader(new FileReader("book.csv"))) {
 				String line;
 				while ((line = br.readLine()) != null) {
 					String[] values = line.split(COMMA_DELIMITER);
 					System.out.println(values.length);
 					records.add(Arrays.asList(values));
-					v.add(new Employee(values[0], values[1], Integer.parseInt(values[2]), Integer.parseInt(values[3])));
+					v.add(new Ripetitore(values[0], values[1], Integer.parseInt(values[2]), Integer.parseInt(values[3])));
 				}
 				br.close();
 			} catch (IOException i) {
 				i.printStackTrace();
 				return;
 			}
-			for(Employee item: v) {		
+			for(Ripetitore item: v) {		
 				System.out.println(v.toString());
 			}
 
