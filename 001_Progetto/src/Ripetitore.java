@@ -7,7 +7,7 @@ public class Ripetitore {
 	private String potenza;
 	
 	
-	// ethods
+	// Methods
 	public Ripetitore(String gestore, String impianto, String indirizzo, String potenza) {
 		super();
 		this.gestore = gestore;
