@@ -1,13 +1,13 @@
 
 public class Ripetitore {
-	//Attributes
+	// Attributes
 	private String gestore;
 	private String impianto;
 	private String indirizzo;
 	private String potenza;
 	
 	
-	//Methods
+	// ethods
 	public Ripetitore(String gestore, String impianto, String indirizzo, String potenza) {
 		super();
 		this.gestore = gestore;
@@ -17,7 +17,7 @@ public class Ripetitore {
 	}
 	
 	
-	//Getters and Setters
+	// Getters and Setters
 	public String getgestore() {
 		return gestore;
 	}
