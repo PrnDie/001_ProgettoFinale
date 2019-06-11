@@ -96,29 +96,6 @@ public class Test
 			System.out.println(v.toString());
 		}
 
-<<<<<<< HEAD
-	Ripetitore e = new Ripetitore("Mario", "Via Brecce Bianche", 65535, 1024 * 1024 - 2);
-	/*
-			try {
-				FileOutputStream fileOut = new FileOutputStream("employee.ser");
-				ObjectOutputStream out = new ObjectOutputStream(fileOut);
-				out.writeObject(e);
-				out.close();
-				fileOut.close();
-				System.out.printf("Serialized data is saved in employee.ser");
-			} catch (IOException i) {
-				i.printStackTrace();
-			}
-	*/
-			Ripetitore e1 = null;		
-			try {
-				FileInputStream fileIn = new FileInputStream("employee.ser");
-				ObjectInputStream in = new ObjectInputStream(fileIn);
-				e1 = (Ripetitore) in.readObject();
-				in.close();
-				fileIn.close();
-			} catch (IOException i) {
-=======
 		List<List<String>> records2 = new ArrayList<>();
 		try (Scanner s = new Scanner(new File("t1.csv"));) {
 		while (s.hasNextLine()) {
@@ -126,42 +103,11 @@ public class Test
 		}
 			s.close();
 		} catch (IOException i) {
->>>>>>> branch 'master' of https://github.com/PrnDie/001_ProgettoFinale.git
 				i.printStackTrace();
 				return;
 			}
 	}
 
-<<<<<<< HEAD
-			List<List<String>> records = new ArrayList<>();
-			Vector<Ripetitore> v = new Vector<Ripetitore>();
-			try (BufferedReader br = new BufferedReader(new FileReader("book.csv"))) {
-				String line;
-				while ((line = br.readLine()) != null) {
-					String[] values = line.split(COMMA_DELIMITER);
-					System.out.println(values.length);
-					records.add(Arrays.asList(values));
-					v.add(new Ripetitore(values[0], values[1], Integer.parseInt(values[2]), Integer.parseInt(values[3])));
-				}
-				br.close();
-			} catch (IOException i) {
-				i.printStackTrace();
-				return;
-			}
-			for(Ripetitore item: v) {		
-				System.out.println(v.toString());
-			}
-
-			List<List<String>> records2 = new ArrayList<>();
-			try (Scanner s = new Scanner(new File("book.csv"));) {
-				while (s.hasNextLine()) {
-					records2.add(getRecordFromLine(s.nextLine()));
-				}
-				s.close();
-			} catch (IOException i) {
-				i.printStackTrace();
-				return;
-=======
 	private static List<String> getRecordFromLine(String line)
 	{
 		List<String> values = new ArrayList<String>();
@@ -169,7 +115,6 @@ public class Test
 		rowScanner.useDelimiter(COMMA_DELIMITER);
 			while (rowScanner.hasNext()) {
 				values.add(rowScanner.next());
->>>>>>> branch 'master' of https://github.com/PrnDie/001_ProgettoFinale.git
 			}
 		}
 		return values;
