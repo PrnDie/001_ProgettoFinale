@@ -80,7 +80,6 @@ public class Test
 			String line;
 			while ((line = br.readLine()) != null) {
 				String[] values = line.split(COMMA_DELIMITER);
-				System.out.println(values.length);
 				records.add(Arrays.asList(values));
 				v.add(new Ripetitore(values[0], values[1], values[2], values[3]));
 			}
