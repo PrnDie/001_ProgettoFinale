@@ -1,11 +1,9 @@
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.ObjectInputStream;
 import java.net.URI;
 import java.net.URL;
 import java.net.URLConnection;
@@ -92,10 +90,6 @@ public class Test
 			return;
 		}
 		
-		for(Ripetitore item: v) {		
-			System.out.println(v.toString());
-		}
-
 		List<List<String>> records2 = new ArrayList<>();
 		try (Scanner s = new Scanner(new File("t1.csv"));) {
 		while (s.hasNextLine()) {
