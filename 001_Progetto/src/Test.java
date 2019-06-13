@@ -1,11 +1,9 @@
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.ObjectInputStream;
 import java.net.URI;
 import java.net.URL;
 import java.net.URLConnection;
@@ -14,7 +12,6 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Scanner;
 import java.util.Vector;
 
 import org.json.simple.JSONArray;
@@ -37,24 +34,14 @@ public class Test
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-
 		
-		List<List<String>> records = new ArrayList<>();
-		Vector<Ripetitore> v = new Vector<Ripetitore>();
-		try (BufferedReader br = new BufferedReader(new FileReader("t1.csv"))) {
-			String line;
-			while ((line = br.readLine()) != null) {
-				String[] values = line.split(COMMA_DELIMITER);
-				records.add(Arrays.asList(values));
-				v.add(new Ripetitore(values[0], values[1], values[2], values[3]));
+		try {
+				insertdata("t1.csv");
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
-			br.close();
-		} catch (IOException i) {
-			i.printStackTrace();
-			return;
-		}
-		System.out.println(v);
-
+		
+		
 	}
 	
 	public static void download(String url, String fileName) throws Exception
@@ -105,7 +92,23 @@ public class Test
 		        }
 		    }
 		}
-		
-			System.out.println( "OK" );
+	}
+	
+	public static void insertdata(String file) throws Exception
+	{
+		List<List<String>> records = new ArrayList<>();
+		Vector<Ripetitore> v = new Vector<Ripetitore>();
+		try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+			String line;
+			while ((line = br.readLine()) != null) {
+				String[] values = line.split(COMMA_DELIMITER);
+				records.add(Arrays.asList(values));
+				v.add(new Ripetitore(values[0], values[1], values[2], values[3]));
+			}
+		br.close();
+		} catch (IOException i) {
+			i.printStackTrace();
+			return;
+		}
 	}
 }
