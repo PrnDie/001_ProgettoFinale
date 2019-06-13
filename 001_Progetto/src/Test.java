@@ -28,47 +28,10 @@ public class Test
 
 	public static void main(String[] args)
 	{
-		/**
-		 * Link dataaset 
-		 */
 		String url = "https://www.dati.gov.it/api/3/action/package_show?id=96404f82-975e-490e-89e5-966181f72b4c";
 		
-		if(args.length == 1)
-			url = args[0];
-		
 		try {
-			URLConnection openConnection = new URL(url).openConnection();
-			openConnection.addRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:25.0) Gecko/20100101 Firefox/25.0");
-			InputStream in = openConnection.getInputStream();
-			String data = "";
-			String line = "";
-			try {
-				InputStreamReader inR = new InputStreamReader(in);
-				BufferedReader buf = new BufferedReader(inR);
-				
-					while ((line = buf.readLine()) != null) {
-						data+= line;
-					}
-				} finally {
-					in.close();
-					}
-			 
-			JSONObject obj = (JSONObject) JSONValue.parseWithException(data);
-			JSONObject objI = (JSONObject) (obj.get("result"));
-			JSONArray objA = (JSONArray) (objI.get("resources"));
-			
-			for(Object o: objA) {
-			    if (o instanceof JSONObject) {
-			        JSONObject o1 = (JSONObject)o; 
-			        String format = (String)o1.get("format");
-			        String urlD = (String)o1.get("url");
-			        if(format.equals("csv")) {
-			        	download(urlD, "t1.csv");
-			        }
-			    }
-			}
-			
-				System.out.println( "OK" );
+				readdata(url);
 			} catch (IOException | ParseException e) {
 				e.printStackTrace();
 			} catch (Exception e) {
@@ -90,7 +53,7 @@ public class Test
 			i.printStackTrace();
 			return;
 		}
-		
+		System.out.println(v);
 
 	}
 	
@@ -107,5 +70,42 @@ public class Test
 		try (InputStream in = URI.create(url).toURL().openStream()) {
 			Files.copy(in, Paths.get(fileName));
 		}
+	}
+	
+	public static void readdata(String url) throws Exception
+	{
+		URLConnection openConnection = new URL(url).openConnection();
+		openConnection.addRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:25.0) Gecko/20100101 Firefox/25.0");
+		InputStream in = openConnection.getInputStream();
+		String data = "";
+		String line = "";
+		try {
+			InputStreamReader inR = new InputStreamReader(in);
+			BufferedReader buf = new BufferedReader(inR);
+			
+				while ((line = buf.readLine()) != null) {
+					data+= line;
+				}
+			} finally {
+				in.close();
+				}
+		 
+		JSONObject obj = (JSONObject) JSONValue.parseWithException(data);
+		JSONObject objI = (JSONObject) (obj.get("result"));
+		JSONArray objA = (JSONArray) (objI.get("resources"));
+		
+		for(Object o: objA) {
+		    if (o instanceof JSONObject) {
+		        JSONObject o1 = (JSONObject)o; 
+		        String format = (String)o1.get("format");
+		        String urlD = (String)o1.get("url");
+		        if(format.equals("csv"))
+		        {
+		        	download(urlD, "t1.csv");
+		        }
+		    }
+		}
+		
+			System.out.println( "OK" );
 	}
 }
