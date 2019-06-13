@@ -22,8 +22,6 @@ import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.ParseException;
 
-import esempioSerializzazione.Employee;
-
 public class Test
 {
 	final static String COMMA_DELIMITER = ";";
