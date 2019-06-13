@@ -19,9 +19,15 @@ import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.ParseException;
 
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.FileSystemXmlApplicationContext;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
+import org.springframework.ui.ModelMap;
+
+
+@Controller
 public class Test
 {
 	final static String COMMA_DELIMITER = ";";
@@ -43,7 +49,7 @@ public class Test
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		
+
 		
 	}
 	
@@ -113,5 +119,10 @@ public class Test
 			i.printStackTrace();
 			return;
 		}
+	}
+	
+	@RequestMapping(method = RequestMethod.GET)public String printHello(ModelMap model) {
+		model.addAttribute("message", "Hello Spring MVC Framework!");
+		return "hello";
 	}
 }
