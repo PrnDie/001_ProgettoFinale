@@ -1,13 +1,21 @@
-
-public class Ripetitore {
-	// Attributes
+/**
+ * Considerata la semplicità della gerarchia di attributi presenti, abbiamo ritenuto opportuno creare una classe soltanto
+ * che contiene come attributi le colonne del nostro database. *
+ */
+public class Ripetitore
+{
+	/**
+	 * Attributi
+	 * Tutti gli attributi sono di tipo string, anche potenza, perchè al suo interno troviamo dei simboli.
+	 */
 	private String gestore;
 	private String impianto;
 	private String indirizzo;
 	private String potenza;
 	
-	
-	// Methods
+	/**
+	 * Metodi
+	 */
 	public Ripetitore(String gestore, String impianto, String indirizzo, String potenza) {
 		super();
 		this.gestore = gestore;
@@ -16,8 +24,9 @@ public class Ripetitore {
 		this.potenza = potenza;
 	}
 	
-	
-	// Getters and Setters
+	/**
+	 * Getter and Setter 
+	 */
 	public String getgestore() {
 		return gestore;
 	}

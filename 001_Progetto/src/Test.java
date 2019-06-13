@@ -1,9 +1,11 @@
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
 import java.net.URI;
 import java.net.URL;
 import java.net.URLConnection;
@@ -19,6 +21,8 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.ParseException;
+
+import esempioSerializzazione.Employee;
 
 public class Test
 {
@@ -73,8 +77,8 @@ public class Test
 				e.printStackTrace();
 			}
 
-		List<List<String>> records = new ArrayList<>();
 		
+		List<List<String>> records = new ArrayList<>();
 		Vector<Ripetitore> v = new Vector<Ripetitore>();
 		try (BufferedReader br = new BufferedReader(new FileReader("t1.csv"))) {
 			String line;
@@ -89,28 +93,7 @@ public class Test
 			return;
 		}
 		
-		List<List<String>> records2 = new ArrayList<>();
-		try (Scanner s = new Scanner(new File("t1.csv"));) {
-		while (s.hasNextLine()) {
-			records2.add(getRecordFromLine(s.nextLine()));
-		}
-			s.close();
-		} catch (IOException i) {
-				i.printStackTrace();
-				return;
-			}
-	}
 
-	private static List<String> getRecordFromLine(String line)
-	{
-		List<String> values = new ArrayList<String>();
-		try (Scanner rowScanner = new Scanner(line)) {
-		rowScanner.useDelimiter(COMMA_DELIMITER);
-			while (rowScanner.hasNext()) {
-				values.add(rowScanner.next());
-			}
-		}
-		return values;
 	}
 	
 	public static void download(String url, String fileName) throws Exception
