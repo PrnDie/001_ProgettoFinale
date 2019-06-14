@@ -32,10 +32,10 @@ public class Application
 	
 	public static void main(String[] args)
 	{
-		String url = "https://www.dati.gov.it/api/3/action/package_show?id=96404f82-975e-490e-89e5-966181f72b4c";
-		
 		SpringApplication.run(Application.class, args);
-				
+		
+		String url = "https://www.dati.gov.it/api/3/action/package_show?id=96404f82-975e-490e-89e5-966181f72b4c";
+						
 		try {
 				readdata(url);
 			} catch (IOException | ParseException e) {
@@ -51,6 +51,7 @@ public class Application
 			}
 		
 	}
+	
 	public static void download(String url, String fileName) throws Exception
 	{
 	    File f = new File(fileName);
