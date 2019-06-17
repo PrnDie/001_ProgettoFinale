@@ -23,6 +23,7 @@ import org.json.simple.JSONValue;
 import org.json.simple.parser.ParseException;
 import org.springframework.stereotype.Component;
 
+
 import com.example.demo.Ripetitore;
 
 @Component
@@ -125,7 +126,8 @@ public class Serv
 		return v.get(50).toString();
 	}
 	
-	//public String media()  throws Exception{
-
-   //}
+	public Ripetitore rip() throws Exception
+	{
+		return v.get(25);
+	}
 }
