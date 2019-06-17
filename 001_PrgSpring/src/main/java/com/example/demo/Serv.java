@@ -54,7 +54,7 @@ public class Serv
 	{
 	    File f = new File(fileName);
 	    /**
-	     * Mi assicuro che il file esista
+	     * Mi assicuro che il file esista.
 	     */
 	    if (f.exists()) {
 	    	f.delete();
