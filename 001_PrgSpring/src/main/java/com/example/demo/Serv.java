@@ -28,7 +28,7 @@ import com.example.demo.Ripetitore;
 @Component
 public class Serv
 {
-	public static Vector<Ripetitore> v1 = new Vector<Ripetitore>();
+	public static Vector<Ripetitore> v = new Vector<Ripetitore>();
 	final static String COMMA_DELIMITER = ";";
 
 	static {
@@ -44,7 +44,7 @@ public class Serv
 				}
 			
 			try {
-					insertdata("t1.csv", v1);
+					insertdata("t1.csv");
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -63,7 +63,7 @@ public class Serv
 		try (InputStream in = URI.create(url).toURL().openStream()) {
 			Files.copy(in, Paths.get(fileName));
 		}
-		System.out.println("download effettuata");
+		System.out.println("Download effettuato");
 	}
 	
 	public static void readdata(String url) throws Exception
@@ -99,10 +99,10 @@ public class Serv
 		        }
 		    }
 		}
-		System.out.println("Lettur effettuata");
+		System.out.println("Lettura effettuata");
 	}
 	
-	public static void insertdata(String file, Vector v) throws Exception
+	public static void insertdata(String file) throws Exception
 	{
 		List<List<String>> records = new ArrayList<>();
 		try (BufferedReader br = new BufferedReader(new FileReader(file))) {
@@ -117,11 +117,11 @@ public class Serv
 			i.printStackTrace();
 			return;
 		}
-		System.out.println("parsing effettuata");
+		System.out.println("Parsing effettuato");
 	}
 	
 	public String prova() throws Exception
 	{
-		return v1.get(50).toString();
+		return v.get(50).toString();
 	}
 }
