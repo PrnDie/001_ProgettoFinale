@@ -23,6 +23,7 @@ import org.json.simple.JSONValue;
 import org.json.simple.parser.ParseException;
 import org.springframework.stereotype.Component;
 
+
 import com.example.demo.Ripetitore;
 
 @Component
@@ -125,8 +126,10 @@ public class Serv
 		return v.get(50).toString();
 	}
 	
+//<<<<<<< HEAD
+
 	public String media()  throws Exception{
-		int pot1=0,pot2=0,pot3=0,pot4=0;
+		int pot1=0,pot2=0,pot3=0,pot4=0,pot5=0;
 		String s1= "<= 7";
 		String s2= "> 7 e <= 20";
 		String s3= "> 20 e <= 300";
@@ -146,7 +149,18 @@ public class Serv
 		   while( v.get(i).getpotenza().equalsIgnoreCase(s4)) {
 			   pot4++;
 		   }
+		   while( v.get(i).getpotenza().equalsIgnoreCase(s5)) {
+			   pot5++;
+		   }
 	   }
+	    System.out.println("<= 7: ", pot1 +"> 7 e <= 20: ", pot2 + "> 20 e <= 300", pot3 + "> 300 e <= 1000", pot4 + "> 1000",pot5);
+	    
 
    }
+//=======
+	public Ripetitore rip() throws Exception
+	{
+		return v.get(25);
+	}
+//>>>>>>> branch 'master' of https://github.com/PrnDie/001_ProgettoFinale.git
 }
