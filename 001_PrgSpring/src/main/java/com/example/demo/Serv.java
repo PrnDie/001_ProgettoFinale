@@ -125,7 +125,28 @@ public class Serv
 		return v.get(50).toString();
 	}
 	
-	//public String media()  throws Exception{
+	public String media()  throws Exception{
+		int pot1=0,pot2=0,pot3=0,pot4=0;
+		String s1= "<= 7";
+		String s2= "> 7 e <= 20";
+		String s3= "> 20 e <= 300";
+		String s4= "> 300 e <= 1000";
+		String s5= "> 1000";
+	 
+	    for (int i=0; i < v.size(); i++) {
+		   while( v.get(i).getpotenza().equalsIgnoreCase(s1) ){
+			   pot1++;
+		   }
+		   while( v.get(i).getpotenza().equalsIgnoreCase(s2) ) {
+			   pot2++;
+		   }
+		   while( v.get(i).getpotenza().equalsIgnoreCase(s3)) {
+			   pot3++;
+		   }
+		   while( v.get(i).getpotenza().equalsIgnoreCase(s4)) {
+			   pot4++;
+		   }
+	   }
 
-   //}
+   }
 }
