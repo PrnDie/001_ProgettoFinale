@@ -77,7 +77,7 @@ public class Serv
 			InputStreamReader inR = new InputStreamReader(in);
 			BufferedReader buf = new BufferedReader(inR);
 			
-				while ((line = buf.readLine()) != null) {
+				while ((line = buf.readLine()) != null) { 
 					data+= line;
 				}
 			} finally {
@@ -88,7 +88,7 @@ public class Serv
 		JSONObject objI = (JSONObject) (obj.get("result"));
 		JSONArray objA = (JSONArray) (objI.get("resources"));
 		
-		for(Object o: objA) {
+		for(Object o: objA) {                 
 		    if (o instanceof JSONObject) {
 		        JSONObject o1 = (JSONObject)o; 
 		        String format = (String)o1.get("format");
@@ -99,7 +99,7 @@ public class Serv
 		        }
 		    }
 		}
-		System.out.println("Lettur effettuata");
+		System.out.println("Lettura effettuata");
 	}
 	
 	public static void insertdata(String file, Vector v) throws Exception
@@ -107,8 +107,8 @@ public class Serv
 		List<List<String>> records = new ArrayList<>();
 		try (BufferedReader br = new BufferedReader(new FileReader(file))) {
 			String line;
-			while ((line = br.readLine()) != null) {
-				String[] values = line.split(COMMA_DELIMITER);
+			while ((line = br.readLine()) != null) { 
+				String[] values = line.split(COMMA_DELIMITER); 
 				records.add(Arrays.asList(values));
 				v.add(new Ripetitore(values[0], values[1], values[2], values[3]));
 			}
@@ -124,4 +124,6 @@ public class Serv
 	{
 		return v1.get(50).toString();
 	}
+	
+	public String media( throws Exception) {
 }
