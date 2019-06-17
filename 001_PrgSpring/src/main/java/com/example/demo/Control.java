@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import java.io.IOException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,8 +10,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.core.*;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+
 
 @RestController
 public class Control
@@ -28,8 +32,9 @@ public class Control
 	public String MetaDati() throws Exception
 	{
 		ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
-		Ripetitore rip = serv.rip();		
-		String json = mapper.writeValueAsString(rip);
+		mapper.toString();
+		String json = mapper.writeValueAsString(serv.rip());
+		System.out.println(json);
 		return json;
 	}
 		

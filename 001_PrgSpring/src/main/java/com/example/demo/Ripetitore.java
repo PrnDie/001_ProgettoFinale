@@ -63,7 +63,6 @@ public class Ripetitore
 	
 	@Override
 	public String toString() {
-		return "Ripetitore [Gestore=" + gestore + ", Impianto=" + impianto + ", Indirizzo="
-				+ indirizzo + ", Potenza=" + potenza + "]";
+		return gestore + ", " + impianto + ", " + indirizzo + ", " + potenza;
 	}
 }
