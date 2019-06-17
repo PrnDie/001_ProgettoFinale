@@ -125,5 +125,7 @@ public class Serv
 		return v.get(50).toString();
 	}
 	
-	public String media( throws Exception) {
+	//public String media( throws Exception) {
+
+   //}
 }
