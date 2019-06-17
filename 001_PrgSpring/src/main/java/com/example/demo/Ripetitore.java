@@ -61,7 +61,6 @@ public class Ripetitore
 		this.potenza = potenza;
 	}
 	
-	
 	@Override
 	public String toString() {
 		return "Ripetitore [Gestore=" + gestore + ", Impianto=" + impianto + ", Indirizzo="
