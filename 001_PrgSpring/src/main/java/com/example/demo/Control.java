@@ -25,13 +25,12 @@ public class Control
 	
 
 	@GetMapping("/metadati")
-	public void MetaDati() throws Exception
+	public String MetaDati() throws Exception
 	{
 		ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
-		Ripetitore rip = serv.rip();
-		
+		Ripetitore rip = serv.rip();		
 		String json = mapper.writeValueAsString(rip);
-		System.out.println(json);
+		return json;
 	}
 		
 	@RequestMapping("/")
@@ -39,9 +38,7 @@ public class Control
 	{
 		return "Welcome";
 	}
-	
-	
-	
+		
 	@ResponseStatus(value = HttpStatus.NOT_FOUND)
 	public class EntityNotFoundException extends RuntimeException
 	{
