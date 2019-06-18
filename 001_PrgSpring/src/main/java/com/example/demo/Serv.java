@@ -154,8 +154,8 @@ public class Serv
 	    return ("\n<= 7: " + pot1 +"\n> 7 e <= 20: " + pot2 + "\n> 20 e <= 300" + pot3 + "\n> 300 e <= 1000" + pot4 + "\n> 1000" + pot5);
    }
 	
-	public Ripetitore rip() throws Exception
+	public Ripetitore rip(int i) throws Exception
 	{
-		return v.get(25);
+		return v.get(i);
 	}
 }
