@@ -22,6 +22,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.ParseException;
 import org.springframework.stereotype.Component;
+import java.lang.reflect.Field;
 
 
 import com.example.demo.Ripetitore;
@@ -48,7 +49,7 @@ public class Serv
 					insertdata("t1.csv");
 				} catch (Exception e) {
 					e.printStackTrace();
-				}
+				}	
 			}
 	
 	public static void download(String url, String fileName) throws Exception
@@ -121,41 +122,71 @@ public class Serv
 		System.out.println("Parsing effettuato");
 	}
 	
-	public String prova() throws Exception
+	public String dati(int i) throws Exception
 	{
-		return v.get(50).toString();
+		return v.get(i).toString();
 	}
 
-	public String media()  throws Exception{
+	public String media()  throws Exception
+	{
 		int pot1=0,pot2=0,pot3=0,pot4=0,pot5=0;
+		
 		String s1= "<= 7";
 		String s2= "> 7 e <= 20";
 		String s3= "> 20 e <= 300";
 		String s4= "> 300 e <= 1000";
 		String s5= "> 1000";
 	 
-	    for (int i=0; i < v.size(); i++) {
-		   while( v.get(i).getpotenza().equalsIgnoreCase(s1) ){
+	    for (int i=1; i < v.size(); i++) {
+		   if( v.get(i).getpotenza().equalsIgnoreCase(s1) ){
 			   pot1++;
 		   }
-		   while( v.get(i).getpotenza().equalsIgnoreCase(s2) ) {
+		   else if( v.get(i).getpotenza().equalsIgnoreCase(s2) ) {
 			   pot2++;
 		   }
-		   while( v.get(i).getpotenza().equalsIgnoreCase(s3)) {
+		   else if( v.get(i).getpotenza().equalsIgnoreCase(s3)) {
 			   pot3++;
 		   }
-		   while( v.get(i).getpotenza().equalsIgnoreCase(s4)) {
+		   else if( v.get(i).getpotenza().equalsIgnoreCase(s4)) {
 			   pot4++;
 		   }
-		   while( v.get(i).getpotenza().equalsIgnoreCase(s5)) {
+		   else if( v.get(i).getpotenza().equalsIgnoreCase(s5)) {
 			   pot5++;
 		   }
 	   }
-	    return ("\n<= 7: " + pot1 +"\n> 7 e <= 20: " + pot2 + "\n> 20 e <= 300" + pot3 + "\n> 300 e <= 1000" + pot4 + "\n> 1000" + pot5);
+	    return ("\n<= 7: " + pot1 +"\n> 7 e <= 20: " + pot2 + "\n> 20 e <= 300: " + pot3 + "\n> 300 e <= 1000: " + pot4 + "\n> 1000: " + pot5);
    }
 	
 	public Ripetitore rip(int i) throws Exception
 	{
 		return v.get(i);
 	}
+	
+	public String MetaDati()
+	{
+		String fldName = null;
+		Field[] fields = Ripetitore.class.getFields();
+		
+		for (int i=0; i<fields.length; i++)
+		{
+			try {
+					fldName = fields[i].getName();
+					fields[i].getType();
+					
+					
+				} catch (Exception e) {
+					e.printStackTrace ();
+				}
+		}
+		return fldName;
+		
+		
+		/*ClassABC abc = new ClassABC();
+for (Field field : abc.getClass().getDeclaredFields()) {
+    field.setAccessible(true);
+    fldName += field.getName();
+    
+}*/
+		
+	}	
 }

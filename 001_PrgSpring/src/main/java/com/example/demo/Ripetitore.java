@@ -19,13 +19,16 @@ public class Ripetitore
 	 * Metodi
 	 */
 	public Ripetitore(String gestore, String impianto, String indirizzo, String potenza) {
-		super();
 		this.gestore = gestore;
 		this.impianto = impianto;
 		this.indirizzo = indirizzo;
 		this.potenza = potenza;
 	}
 	
+	public Ripetitore()
+	{
+	}
+
 	/**
 	 * Getter and Setter 
 	 */

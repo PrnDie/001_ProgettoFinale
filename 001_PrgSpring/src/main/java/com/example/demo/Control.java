@@ -14,22 +14,31 @@ public class Control
 	@Autowired
 	private Serv serv;
 
-	@GetMapping("/prova")
+	@GetMapping("/media")
 	public String Prova() throws Exception
 	{
-		return serv.prova();
+		return serv.media();
 	}
 	
-	@GetMapping("/MetaDati")
-	public String MetaDati() throws Exception
+	@GetMapping("/dati")
+	public String Dati() throws Exception
 	{
 		ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
 		mapper.toString();
-		String json = mapper.writeValueAsString(serv.rip(0));
-		
-		System.out.println(json);
+		String json = mapper.writeValueAsString(serv.rip(5));
 		return json;
 	}
+	
+	/*@GetMapping("/metadati")
+	public String MetaDati() throws Exception
+	{
+		ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
+		
+		mapper.toString();		
+		
+		System.out.println(json);
+		return json;		    
+	}*/
 	
 	@RequestMapping("/")
 	public String invoke() {
