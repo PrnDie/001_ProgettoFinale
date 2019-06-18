@@ -125,8 +125,6 @@ public class Serv
 	{
 		return v.get(50).toString();
 	}
-	
-//<<<<<<< HEAD
 
 	public String media()  throws Exception{
 		int pot1=0,pot2=0,pot3=0,pot4=0,pot5=0;
@@ -153,14 +151,11 @@ public class Serv
 			   pot5++;
 		   }
 	   }
-	    System.out.println("<= 7: ", pot1 +"> 7 e <= 20: ", pot2 + "> 20 e <= 300", pot3 + "> 300 e <= 1000", pot4 + "> 1000",pot5);
-	    
-
+	    return ("\n<= 7: " + pot1 +"\n> 7 e <= 20: " + pot2 + "\n> 20 e <= 300" + pot3 + "\n> 300 e <= 1000" + pot4 + "\n> 1000" + pot5);
    }
-//=======
+	
 	public Ripetitore rip() throws Exception
 	{
 		return v.get(25);
 	}
-//>>>>>>> branch 'master' of https://github.com/PrnDie/001_ProgettoFinale.git
 }

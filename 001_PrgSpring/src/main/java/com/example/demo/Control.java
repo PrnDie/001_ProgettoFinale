@@ -5,6 +5,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+
 @RestController
 public class Control
 {
@@ -12,15 +15,19 @@ public class Control
 	private Serv serv;
 
 	@GetMapping("/prova")
-	
-	public String Prova()
+	public String Prova() throws Exception
 	{
-		try {
-			return serv.prova();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;
+		return serv.prova();
+	}
+	
+	@GetMapping("/MetaDati")
+	public String MetaDati() throws Exception
+	{
+		ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
+		mapper.toString();
+		String json = mapper.writeValueAsString(serv.rip());
+		System.out.println(json);
+		return json;
 	}
 	
 	@RequestMapping("/")
