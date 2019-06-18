@@ -25,6 +25,6 @@ public class Control
 	
 	@RequestMapping("/")
 	public String invoke() {
-		return "Welcome";
+		return "Welcome ";
 	}	
 }
