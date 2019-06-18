@@ -2,6 +2,7 @@ package com.example.demo;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
 import java.io.BufferedReader;
@@ -122,9 +123,14 @@ public class Serv
 		System.out.println("Parsing effettuato");
 	}
 	
-	public String dati(int i) throws Exception
+	public Vector<Ripetitore> dati() throws Exception
 	{
-		return v.get(i).toString();
+		return v;
+	}
+	
+	public Ripetitore dati(int i) throws Exception
+	{
+		return v.get(i);
 	}
 
 	public String media()  throws Exception
@@ -162,31 +168,18 @@ public class Serv
 		return v.get(i);
 	}
 	
-	public Vector<MetaDati> MetaDati()
+	public Collection MetaDati()
 	{
-		Vector<MetaDati> m = new Vector<MetaDati>();
+		List<MetaDati> m = new ArrayList<>();
+		Field[] fields = Ripetitore.class.getDeclaredFields();
 		
-		Field[] fields = Ripetitore.class.getFields();
-		
-		for (int i=0; i<fields.length; i++)
+		for (Field o : fields)
 		{
-			try {
-				MetaDati mm = new MetaDati(fields[i].getName(), fields[i].toGenericString());
-				
-					m.add (mm);					
-				} catch (Exception e) {
-					e.printStackTrace ();
-				}
+				MetaDati mm = new MetaDati();
+				mm.setNome(o.getName());
+				mm.setTipo(o.getType().getSimpleName());
+				m.add (mm);		
 		}
 		return m;
-		
-		
-		/*ClassABC abc = new ClassABC();
-for (Field field : abc.getClass().getDeclaredFields()) {
-    field.setAccessible(true);
-    fldName += field.getName();
-    
-}*/
-		
 	}	
 }

@@ -25,7 +25,7 @@ public class Control
 	{
 		ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
 		mapper.toString();
-		String json = mapper.writeValueAsString(serv.rip(5));
+		String json = mapper.writeValueAsString(serv.dati());
 		return json;
 	}
 	
