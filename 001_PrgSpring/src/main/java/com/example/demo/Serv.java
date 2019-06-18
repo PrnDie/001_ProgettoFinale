@@ -162,23 +162,23 @@ public class Serv
 		return v.get(i);
 	}
 	
-	public String MetaDati()
+	public Vector<MetaDati> MetaDati()
 	{
-		String fldName = null;
+		Vector<MetaDati> m = new Vector<MetaDati>();
+		
 		Field[] fields = Ripetitore.class.getFields();
 		
 		for (int i=0; i<fields.length; i++)
 		{
 			try {
-					fldName = fields[i].getName();
-					fields[i].getType();
-					
-					
+				MetaDati mm = new MetaDati(fields[i].getName(), fields[i].toGenericString());
+				
+					m.add (mm);					
 				} catch (Exception e) {
 					e.printStackTrace ();
 				}
 		}
-		return fldName;
+		return m;
 		
 		
 		/*ClassABC abc = new ClassABC();

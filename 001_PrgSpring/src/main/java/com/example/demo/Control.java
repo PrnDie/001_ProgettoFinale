@@ -29,16 +29,14 @@ public class Control
 		return json;
 	}
 	
-	/*@GetMapping("/metadati")
+	@GetMapping("/metadati")
 	public String MetaDati() throws Exception
 	{
 		ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
-		
-		mapper.toString();		
-		
-		System.out.println(json);
-		return json;		    
-	}*/
+		mapper.toString();
+		String json = mapper.writeValueAsString(serv.MetaDati());
+		return json;    
+	}
 	
 	@RequestMapping("/")
 	public String invoke() {
