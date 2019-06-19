@@ -136,6 +136,7 @@ public class Serv
 	public String media()  throws Exception
 	{
 		int pot1=0,pot2=0,pot3=0,pot4=0,pot5=0;
+		System.out.println("Elenco Impianti di Telecomunicazione e Radiotelevisione nel Comune di Milano");
 		
 		String s1= "<= 7";
 		String s2= "> 7 e <= 20";
@@ -160,7 +161,7 @@ public class Serv
 			   pot5++;
 		   }
 	   }
-	    return ("\n<= 7: " + pot1 +"\n> 7 e <= 20: " + pot2 + "\n> 20 e <= 300: " + pot3 + "\n> 300 e <= 1000: " + pot4 + "\n> 1000: " + pot5);
+	    return ("\nPotenza <= 7: " + pot1 +"\nPotenza > 7 e <= 20: " + pot2 + "\nPotenza > 20 e <= 300: " + pot3 + "\nPotenza > 300 e <= 1000: " + pot4 + "\nPotenza > 1000: " + pot5);
    }
 	
 	public Ripetitore rip(int i) throws Exception
