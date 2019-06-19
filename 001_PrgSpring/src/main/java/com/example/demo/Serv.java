@@ -135,17 +135,19 @@ public class Serv
 
 	public String media()  throws Exception
 	{
-		int pot1=0,pot2=0,pot3=0,pot4=0,pot5=0;
+		int pot1=0,pot2=0,pot3=0,pot4=0,pot5=0,pot6=0,somma=0;
 		System.out.println("Elenco Impianti di Telecomunicazione e Radiotelevisione nel Comune di Milano");
 		
+		String s0= " <= 7";
 		String s1= "<= 7";
 		String s2= "> 7 e <= 20";
-		String s3= "> 20 e <= 300";
-		String s4= "> 300 e <= 1000";
-		String s5= "> 1000";
+		String s3= "> 7 e <= 21";
+		String s4= "> 20 e <= 300";
+		String s5= "> 300 e <= 1000";
+		String s6= "> 1000";
 	 
 	    for (int i=1; i < v.size(); i++) {
-		   if( v.get(i).getpotenza().equalsIgnoreCase(s1) ){
+		   if( (v.get(i).getpotenza().equalsIgnoreCase(s1)) || (v.get(i).getpotenza().equalsIgnoreCase(s0)) ){
 			   pot1++;
 		   }
 		   else if( v.get(i).getpotenza().equalsIgnoreCase(s2) ) {
@@ -160,8 +162,12 @@ public class Serv
 		   else if( v.get(i).getpotenza().equalsIgnoreCase(s5)) {
 			   pot5++;
 		   }
+		   else if( v.get(i).getpotenza().equalsIgnoreCase(s6)) {
+			   pot6++;
+		   }
+		   somma=pot1+pot2+pot3+pot4+pot5+pot6;
 	   }
-	    return ("\nPotenza <= 7: " + pot1 +"\nPotenza > 7 e <= 20: " + pot2 + "\nPotenza > 20 e <= 300: " + pot3 + "\nPotenza > 300 e <= 1000: " + pot4 + "\nPotenza > 1000: " + pot5);
+	    return ("\nPotenza <= 7: " + pot1 +"\nPotenza > 7 e <= 20: " + pot2 +"\nPotenza > 7 e <= 21: " + pot3+ "\nPotenza > 20 e <= 300: " + pot4 + "\nPotenza > 300 e <= 1000: " + pot5 + "\nPotenza > 1000: " + pot6+ "\n Totale elementi analalizzati:" + somma);
    }
 	
 	public Ripetitore rip(int i) throws Exception
