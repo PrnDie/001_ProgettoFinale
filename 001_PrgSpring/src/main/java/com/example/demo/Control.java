@@ -20,7 +20,11 @@ public class Control
 	@RequestMapping("/")
 	public String Start()
 	{
-		return "Benvenuto, ";
+		return "Benvenuto, è possibile interagire con il database utilizzando i seguenti comandi:"
+				+ "\n- /media -------------> Numero delle ripetizioni elencate per potenza;"
+				+ "\n- /metadati ----------> Nome e tipo degli attributi;"
+				+ "\n- /dati --------------> Stampa di tutti i dati contenuti;"
+				+ "\n- /dati?filter=<_100 -> Stampa filtrata, è possibile utilizzare il segno '<' o '>' seguito da '_' e il valore da prendere in considerazione";
 	}
 	
 	@GetMapping("/media")
