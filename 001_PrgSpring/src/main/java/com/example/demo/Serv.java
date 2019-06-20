@@ -28,6 +28,11 @@ import java.lang.reflect.Field;
 
 import com.example.demo.Ripetitore;
 
+/** Classe utilizzare per la dichiarazione del vettore su cui poi vado ad interagire con le varie richieste. Tramite l'url poi
+ * effettua la lettura e il parsing tramite i metodi readdata e insertdata
+ * @author Diego Pranzetti
+ * @author Matteo Vitellozzi
+ */
 @Component
 public class Serv
 {
@@ -53,6 +58,13 @@ public class Serv
 				}	
 			}
 	
+	
+	/** Metodo che effettua il download dei dati dall'URL passatogli, effettua un primo controllo di esistenza del file 
+	 * e tramite il try scarica i dati aprende
+	 * @param url
+	 * @param fileName
+	 * @throws Exception
+	 */
 	public static void download(String url, String fileName) throws Exception
 	{
 	    File f = new File(fileName);
@@ -69,6 +81,12 @@ public class Serv
 		System.out.println("Download effettuato");
 	}
 	
+	/** Metodo che effettua la lettura dei dati dall'URL passatogli, crea due stringhe data e line le quali si occupano di leggere riga
+	 *  per riga il file dell'url. Line, tramite il while controlla l'andata a capo del file di testo(quindi la fine della riga). Successivamente, tramite il for
+	 *  vado a cercare nel file le parole "format","url","csv" da cui poi vado a scaricare i dati 
+	 * @param url url dal quale aprire il file da leggere ed analizzare
+	 * @throws Exception
+	 */
 	public static void readdata(String url) throws Exception
 	{
 		URLConnection openConnection = new URL(url).openConnection();
@@ -132,7 +150,13 @@ public class Serv
 	{
 		return v.get(i);
 	}
-
+	
+	
+	/** Metodo per il calcolo della media, visualizzando tutte le "Potenze" di ogni elemento calcolo la frequenza con 
+	 *  cui si ripetono, con una comparazione confronto ogni elemento con i 7 casi possibili.
+	 * @return pot1,pot2,pot3,pot4,pot5,pot6, sommma la frequenza delle potenze analizzate e la sua somma 
+	 * @throws Exception
+	 */
 	public String media()  throws Exception
 	{
 		int pot1=0,pot2=0,pot3=0,pot4=0,pot5=0,pot6=0,somma=0;
@@ -175,6 +199,11 @@ public class Serv
 		return v.get(i);
 	}
 	
+	
+	/** Metodo che stampa sotto forma di json il tipo del dato preso in analisi. Creo un array che viene riempito
+	 *  dai dati della classe Ripetitore. Attraverso il for che legge ognuno di essi vado a definire il tipo del dato
+	 * @return m Elenco dei tipi di dati presi in analisi
+	 */
 	public Collection MetaDati()
 	{
 		List<MetaDati> m = new ArrayList<>();

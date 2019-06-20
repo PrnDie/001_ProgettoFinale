@@ -1,13 +1,13 @@
 package com.example.demo;
 
-/**
+/** Classe utilizzata per la dichiarazione degli attributi.
  * Considerata la semplicità della gerarchia di attributi presenti, abbiamo ritenuto opportuno creare una classe soltanto
  * che contiene come attributi le colonne del nostro database. *
  */
 public class Ripetitore
 {
 	/**
-	 * Attributi
+	 * Attributes
 	 * Tutti gli attributi sono di tipo string, anche potenza, perchè al suo interno troviamo dei simboli.
 	 */
 	private String gestore;
@@ -16,7 +16,7 @@ public class Ripetitore
 	private String potenza;
 	
 	/**
-	 * Metodi
+	 * Methods
 	 */
 	public Ripetitore(String gestore, String impianto, String indirizzo, String potenza) {
 		this.gestore = gestore;
@@ -30,7 +30,7 @@ public class Ripetitore
 	}
 
 	/**
-	 * Getter and Setter 
+	 * Getters and Setters 
 	 */
 	public String getgestore() {
 		return gestore;
