@@ -1,4 +1,4 @@
-# 001_ProgettoFinale
+# 001_ProgettoFinale - Programmazione Ad Oggetti A.A. 2018/2019 - Progetto Finale - Vitellozzi & Pranzetti
 
 Specifiche del progetto
 • Il data-set: https://www.dati.gov.it/api/3/action/package_show?id=96404f82-975e-490e-89e5-966181f72b4c.
