@@ -69,7 +69,10 @@ public class Serv
 	{
 	    File f = new File(fileName);
 	    /**
-	     * Mi assicuro che il file esista
+	     * Invece di effettuare un sistema di caching, in considerazione del fatto che la base dei dati che andiamo a scricare
+	     * non è particolarmente impegnativa a livello di carico per la banda internet utilizzata.
+	     * Abbiamo optato per un download ad ogni avvio di applicazione avendo cura di verificare la presenza del csv precedentemente scaricatoe se fosse presente, proseguire con la sua eliminazione 
+	     * per evitare accumolo di csv e scricamento della versione aggiornata al momento dell'avvio.
 	     */
 	    if (f.exists()) {
 	    	f.delete();
@@ -123,6 +126,13 @@ public class Serv
 		System.out.println("Lettura effettuata");
 	}
 	
+	/**
+	 * Questa funzione effettua il prsing dei dati appena scaricati.
+	 * Interpreta le stringhe e crea gli oggetti assegnando i parametri agli attributi.
+	 * @param file
+	 * @throws Exception
+	 */
+	
 	public static void insertdata(String file) throws Exception
 	{
 		List<List<String>> records = new ArrayList<>();
@@ -141,6 +151,13 @@ public class Serv
 		System.out.println("Parsing effettuato");
 	}
 	
+	/**
+	 * Questa funzione viene utilizzata per permettere l'applicazione di filtri per la ricerca, altrimenti restituisce l'ArrayList completo di tutti i dati.
+	 * Alla sua chiamata viene passata la stringa inserita nel URL, la funzione la interpreta e agisce di consegyenza sulla base di comandi specifici "<", ">", "$and" e "$or".
+	 * 
+	 * @param filter
+	 * @return
+	 */
 	public ArrayList<Ripetitore> Dati(String filter)
 	{
 		if(filter.equalsIgnoreCase("Std"))
@@ -316,8 +333,9 @@ public class Serv
 	    return ("\nPotenza <= 7: " + pot1 +"\nPotenza > 7 e <= 20: " + pot2 +"\nPotenza > 7 e <= 21: " + pot3+ "\nPotenza > 20 e <= 300: " + pot4 + "\nPotenza > 300 e <= 1000: " + pot5 + "\nPotenza > 1000: " + pot6+ "\n Totale elementi analalizzati:" + somma);
    }	
 	
-	/** Metodo che stampa sotto forma di json il tipo del dato preso in analisi. Creo un array che viene riempito
-	 *  dai dati della classe Ripetitore. Attraverso il for che legge ognuno di essi vado a definire il tipo del dato
+	/** 
+	 * Il metodo seguente modella gli oggetti di tipo MetaDati creandoli sulla base degli attributi della classe ripetitore,
+	 * così da permettere una stampa ottimale e rapida utilizzando il formato json, dal controller.
 	 * @return m Elenco dei tipi di dati presi in analisi
 	 */
 	public Collection MetaDati()

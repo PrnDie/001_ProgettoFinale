@@ -18,16 +18,15 @@ public class Ripetitore
 	/**
 	 * Methods
 	 */
-	public Ripetitore(String gestore, String impianto, String indirizzo, String potenza) {
+	public Ripetitore(String gestore, String impianto, String indirizzo, String potenza)
+	{
 		this.gestore = gestore;
 		this.impianto = impianto;
 		this.indirizzo = indirizzo;
 		this.potenza = potenza;
 	}
 	
-	public Ripetitore()
-	{
-	}
+	public Ripetitore() { }
 
 	/**
 	 * Getters and Setters 
