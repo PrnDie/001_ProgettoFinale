@@ -36,7 +36,7 @@ import com.example.demo.Ripetitore;
 @Component
 public class Serv
 {
-	public static Vector<Ripetitore> v = new Vector<Ripetitore>();
+	private static ArrayList<Ripetitore> v = new ArrayList<Ripetitore>();
 	final static String COMMA_DELIMITER = ";";
 
 	static {
@@ -141,14 +141,136 @@ public class Serv
 		System.out.println("Parsing effettuato");
 	}
 	
-	public Vector<Ripetitore> dati() throws Exception
+	public ArrayList<Ripetitore> Dati(String filter)
 	{
-		return v;
-	}
-	
-	public Ripetitore dati(int i) throws Exception
-	{
-		return v.get(i);
+		if(filter.equalsIgnoreCase("Std"))
+		{
+			return v;
+		}
+		
+		ArrayList<Ripetitore> VFilter = new ArrayList<Ripetitore>();
+		String delim = "[_ ]+";
+		String delim2 = "[ ><=e]+";
+		String [] tokens = filter.split (delim);
+		
+		try
+		{
+			if (tokens[0].equals("<"))
+			{
+				for(int i = 1; i < v.size(); i++)
+				{
+					System.out.println("NON");
+					String [] tokens2 = v.get(i).getpotenza().split (delim2);
+					System.out.println("NON");
+					if(tokens2.length == 3)
+					{
+						try
+						{
+							if (Integer.parseInt(tokens2[1]) <= Integer.parseInt(tokens[1]) && Integer.parseInt(tokens2[2]) <= Integer.parseInt(tokens[1]))
+							{
+								VFilter.add(v.get(i));
+							}
+						} catch (Exception e) {
+							throw new IllegalArgumentException(" - invalid format!");
+						}
+					}
+					else if (tokens2.length == 2)
+					{
+						try
+						{
+							if (Integer.parseInt(tokens2[1]) <= Integer.parseInt(tokens[1]))
+							{
+								VFilter.add(v.get(i));
+							}
+						} catch (Exception e) {
+							throw new IllegalArgumentException(" - invalid format!");
+						}
+						
+					}
+					else
+					{
+						throw new IllegalArgumentException(" - invalid format!");
+					}
+				}
+			}
+			else if (tokens[0].equals(">"))
+			{
+				for(int i = 1; i < v.size(); i++)
+				{
+					String [] tokens2 = v.get(i).getpotenza().split (delim2);
+					if(tokens2.length == 3)
+					{
+						if (Integer.parseInt(tokens2[1]) >= Integer.parseInt(tokens[1]) && Integer.parseInt(tokens2[2]) >= Integer.parseInt(tokens[1]))
+						{
+							VFilter.add(v.get(i));
+						}
+					}
+					else if (tokens2.length == 2)
+					{
+						if (Integer.parseInt(tokens2[1]) >= Integer.parseInt(tokens[1]))
+						{
+							VFilter.add(v.get(i));
+						}
+					}
+				}
+			}
+			else if (tokens[0].equalsIgnoreCase("$and"))
+			{
+				for(int i = 1; i < v.size(); i++)
+				{
+					String [] tokens2 = v.get(i).getpotenza().split (delim2);
+					if(tokens2.length == 3)
+					{
+						if(tokens[1].equals(">") && tokens[3].equals("<"))
+						{
+							if (Integer.parseInt(tokens2[1]) >= Integer.parseInt(tokens[2]) && Integer.parseInt(tokens2[2]) >= Integer.parseInt(tokens[2]) && (Integer.parseInt(tokens2[1]) <= Integer.parseInt(tokens[4]) && Integer.parseInt(tokens2[2]) <= Integer.parseInt(tokens[4])))
+							{
+								VFilter.add(v.get(i));
+							}
+						}
+					}
+					else if (tokens2.length == 2)
+					{
+						if (Integer.parseInt(tokens2[1]) >= Integer.parseInt(tokens[2]) && Integer.parseInt(tokens2[1]) <= Integer.parseInt(tokens[4]))
+						{
+							VFilter.add(v.get(i));
+						}
+					}
+				}
+			}
+			else if (tokens[0].equals("$or"))
+			{
+				for(int i = 1; i < v.size(); i++)
+				{
+					String [] tokens2 = v.get(i).getpotenza().split (delim2);
+					if(tokens2.length == 3)
+					{
+						if(tokens[1].equals(">") && tokens[3].equals("<"))
+						{
+							if ((Integer.parseInt(tokens2[1]) >= Integer.parseInt(tokens[2]) && Integer.parseInt(tokens2[2]) >= Integer.parseInt(tokens[2])) || ((Integer.parseInt(tokens2[1]) <= Integer.parseInt(tokens[4]) && Integer.parseInt(tokens2[2]) <= Integer.parseInt(tokens[4]))))
+							{
+								VFilter.add(v.get(i));
+							}
+						}
+					}
+					else if (tokens2.length == 2)
+					{
+						if (Integer.parseInt(tokens2[1]) >= Integer.parseInt(tokens[2]) || Integer.parseInt(tokens2[1]) <= Integer.parseInt(tokens[4]))
+						{
+							VFilter.add(v.get(i));
+						}
+					}
+				}
+			}
+			else
+			{
+				throw new IllegalArgumentException(" - invalid format!");
+			}
+		} catch (Exception e)
+		{
+			throw new IllegalArgumentException(" - invalid format!");
+		}	
+			return VFilter;
 	}
 	
 	
@@ -192,13 +314,7 @@ public class Serv
 		   somma=pot1+pot2+pot3+pot4+pot5+pot6;
 	   }
 	    return ("\nPotenza <= 7: " + pot1 +"\nPotenza > 7 e <= 20: " + pot2 +"\nPotenza > 7 e <= 21: " + pot3+ "\nPotenza > 20 e <= 300: " + pot4 + "\nPotenza > 300 e <= 1000: " + pot5 + "\nPotenza > 1000: " + pot6+ "\n Totale elementi analalizzati:" + somma);
-   }
-	
-	public Ripetitore rip(int i) throws Exception
-	{
-		return v.get(i);
-	}
-	
+   }	
 	
 	/** Metodo che stampa sotto forma di json il tipo del dato preso in analisi. Creo un array che viene riempito
 	 *  dai dati della classe Ripetitore. Attraverso il for che legge ognuno di essi vado a definire il tipo del dato
