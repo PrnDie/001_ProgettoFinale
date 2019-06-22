@@ -1,6 +1,8 @@
 package com.example.demo;
 
 /** Classe utilizzata per la definizione di metadato.
+ * @author Diego Pranzetti
+ * @author Matteo Vitellozzi
  */
 
 public class MetaDati

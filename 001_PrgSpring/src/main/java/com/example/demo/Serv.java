@@ -127,7 +127,7 @@ public class Serv
 	}
 	
 	/**
-	 * Questa funzione effettua il prsing dei dati appena scaricati.
+	 * Questa funzione effettua il parsing dei dati appena scaricati.
 	 * Interpreta le stringhe e crea gli oggetti assegnando i parametri agli attributi.
 	 * @param file
 	 * @throws Exception
@@ -299,7 +299,7 @@ public class Serv
 	public String media()  throws Exception
 	{
 		int pot1=0,pot2=0,pot3=0,pot4=0,pot5=0,pot6=0,somma=0;
-		System.out.println("Elenco Impianti di Telecomunicazione e Radiotelevisione nel Comune di Milano");
+		System.out.println();
 		
 		String s0= " <= 7";
 		String s1= "<= 7";
@@ -330,7 +330,7 @@ public class Serv
 		   }
 		   somma=pot1+pot2+pot3+pot4+pot5+pot6;
 	   }
-	    return ("\nPotenza <= 7: " + pot1 +"\nPotenza > 7 e <= 20: " + pot2 +"\nPotenza > 7 e <= 21: " + pot3+ "\nPotenza > 20 e <= 300: " + pot4 + "\nPotenza > 300 e <= 1000: " + pot5 + "\nPotenza > 1000: " + pot6+ "\n Totale elementi analalizzati:" + somma);
+	    return ("\nElenco Impianti di Telecomunicazione e Radiotelevisione nel Comune di Milano\nPotenza <= 7: " + pot1 +"\nPotenza > 7 e <= 20: " + pot2 +"\nPotenza > 7 e <= 21: " + pot3+ "\nPotenza > 20 e <= 300: " + pot4 + "\nPotenza > 300 e <= 1000: " + pot5 + "\nPotenza > 1000: " + pot6+ "\n Totale elementi analalizzati:" + somma);
    }	
 	
 	/** 
