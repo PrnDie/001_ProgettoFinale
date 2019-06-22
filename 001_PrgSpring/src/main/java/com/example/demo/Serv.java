@@ -60,7 +60,7 @@ public class Serv
 	
 	
 	/** Metodo che effettua il download dei dati dall'URL passatogli, effettua un primo controllo di esistenza del file 
-	 * e tramite il try scarica i dati aprende
+	 * e tramite il try scarica i dati.
 	 * @param url
 	 * @param fileName
 	 * @throws Exception
